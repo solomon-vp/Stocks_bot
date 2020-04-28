@@ -13,50 +13,56 @@ def start(message):
     if message.text == '/start':
         bot.send_message(message.from_user.id, text='Выбери интересующие тебя активы', reply_markup=keyboard1)
 
-        keyboard = telebot.types.InlineKeyboardMarkup()  # наша клавиатура
-        key_stocks = telebot.types.InlineKeyboardButton(text='Акции', callback_data='stocks')
-        keyboard.add(key_stocks)
-        key_currency = telebot.types.InlineKeyboardButton(text='Валюты', callback_data='currency')
-        keyboard.add(key_currency)
-        key_crypto = telebot.types.InlineKeyboardButton(text='Криптовалюты', callback_data='crypto')
-        keyboard.add(key_crypto)
-
     else:
-        bot.send_message(message.from_user.id, 'Нужно выбрать из списка')
+        bot.send_message(message.from_user.id, 'Напиши /start')
+
+
+keyboard = telebot.types.InlineKeyboardMarkup()  # наша клавиатура
+key_stocks = telebot.types.InlineKeyboardButton(text='Акции', callback_data='stocks')
+keyboard.add(key_stocks)
+key_currency = telebot.types.InlineKeyboardButton(text='Валюты', callback_data='currency')
+keyboard.add(key_currency)
+key_crypto = telebot.types.InlineKeyboardButton(text='Криптовалюты', callback_data='crypto')
+keyboard.add(key_crypto)
 
 
 @bot.callback_query_handler(func=lambda call: True)
 def callback_worker(call):
-    if call.data == "stocks":  # call.data это callback_data, которую мы указали при объявлении кнопки
-        keyboard = telebot.types.InlineKeyboardMarkup()  # наша клавиатура
+    if call.data == "Акции":  # call.data это callback_data, которую мы указали при объявлении кнопки
+        keyboard2 = telebot.types.ReplyKeyboardMarkup(True, True)
+        keyboard2.row('Apple', 'Tesla', 'Facebook')  # наша клавиатура
         key_aapl = telebot.types.InlineKeyboardButton(text='Apple', callback_data='aapl')
-        keyboard.add(key_aapl)
+        keyboard2.add(key_aapl)
         key_tsla = telebot.types.InlineKeyboardButton(text='Tesla', callback_data='tsla')
-        keyboard.add(key_tsla)
+        keyboard2.add(key_tsla)
         key_fb = telebot.types.InlineKeyboardButton(text='Facebook', callback_data='fb')
-        keyboard.add(key_fb)
+        keyboard2.add(key_fb)
 
-        bot.send_message(call.from_user.id, text='Выбери нужную акцию', reply_markup=keyboard)
+        bot.send_message(call.from_user.id, text='Выбери нужную акцию', reply_markup=keyboard1)
 
     elif call.data == "currency":  # call.data это callback_data, которую мы указали при объявлении кнопки
-        keyboard = telebot.types.InlineKeyboardMarkup()  # наша клавиатура
+        keyboard3 = telebot.types.ReplyKeyboardMarkup(True, True)
+        keyboard3.row('Доллар', 'Евро', 'Йена')
         key_usd = telebot.types.InlineKeyboardButton(text='Доллар', callback_data='usd')
-        keyboard.add(key_usd)
+        keyboard3.add(key_usd)
         key_euro = telebot.types.InlineKeyboardButton(text='Евро', callback_data='euro')
-        keyboard.add(key_euro)
+        keyboard3.add(key_euro)
         key_yena = telebot.types.InlineKeyboardButton(text='Йена', callback_data='yena')
-        keyboard.add(key_yena)
+        keyboard3.add(key_yena)
 
-        bot.send_message(call.from_user.id, text='Выбери нужную валюту', reply_markup=keyboard)
+        bot.send_message(call.from_user.id, text='Выбери нужную валюту', reply_markup=keyboard1)
 
     elif call.data == "crypto":  # call.data это callback_data, которую мы указали при объявлении кнопки
-        keyboard = telebot.types.InlineKeyboardMarkup()  # наша клавиатура
+        keyboard4 = telebot.types.ReplyKeyboardMarkup(True, True)
+        keyboard4.row('Bitcoin', 'ETH', 'NEO')
         key_bitcoin = telebot.types.InlineKeyboardButton(text='Биткоин', callback_data='bitcoin')
-        keyboard.add(key_bitcoin)
+        keyboard4.add(key_bitcoin)
         key_eth = telebot.types.InlineKeyboardButton(text='Эфириум', callback_data='eth')
-        keyboard.add(key_eth)
-        key_neo = telebot.types.InlineKeyboardButton(text='НЕО', callback_data='neo')
-        keyboard.add(key_neo)
+        keyboard4.add(key_eth)
+        key_neo = telebot.types.InlineKeyboardButton(text='NEO', callback_data='neo')
+        keyboard4.add(key_neo)
+
+        bot.send_message(call.from_user.id, text='Выбери нужную акцию', reply_markup=keyboard1)
 
 
 bot.polling(none_stop=True, interval=0)
