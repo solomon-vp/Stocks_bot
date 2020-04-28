@@ -13,6 +13,22 @@ for i in currency:
     i = i.text
     cur.append(i)
 
+
+JPY = str(cur[0] + 'RUB')
+USD = str('USD -' + cur[1] + 'RUB')
+EURO = str('EURO -' + cur[2] + 'RUB')
+
 # currency = currency.text
-print(currency)
-print(cur)
+# print(currency)
+
+
+def jpy():
+    return JPY
+
+
+def usd():
+    return USD
+
+
+def euro():
+    return EURO
