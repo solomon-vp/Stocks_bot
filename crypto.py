@@ -21,27 +21,18 @@ for j in crypto:
     j = re.split(r'\W+', j)
     fin.append(j)
 
-print(crypto[0])
-print(fin[0][3:7])
+BTC = str('Стоимость ' + fin[0][3] + ' равна ' + fin[0][4] + fin[0][5] + '.' + fin[0][6] + ' USD')
+ETH = str('Стоимость ' + fin[1][3] + ' равна ' + fin[1][4] + '.' + fin[1][5] + ' USD')
+LTC = str('Стоимость ' + fin[2][3] + ' равна ' + fin[2][4] + '.' + fin[2][5] + ' USD')
 
 
+def btc():
+    return BTC
 
 
-# JPY = str(cry[0] + 'RUB')
-# USD = str('USD -' + cur[1] + 'RUB')
-# EURO = str('EURO -' + cur[2] + 'RUB')
+def eth():
+    return ETH
 
-# currency = currency.text
-# print(currency)
 
-#
-# def jpy():
-#     return JPY
-#
-#
-# def usd():
-#     return USD
-#
-#
-# def euro():
-#     return EURO
+def ltc():
+    return LTC
