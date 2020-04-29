@@ -18,6 +18,7 @@ JPY = str(cur[0] + 'RUB')
 USD = str('USD -' + cur[1] + 'RUB')
 EURO = str('EURO -' + cur[2] + 'RUB')
 
+
 # currency = currency.text
 # print(currency)
 
